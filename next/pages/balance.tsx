@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import NextLink from "next/link";
 import axios, { AxiosResponse, AxiosError } from "axios";
 
 export async function getServerSideProps() {
@@ -20,11 +19,7 @@ export async function getServerSideProps() {
     };
 }
 
-
 export default function balanceList({ data }) {
-
-   console.log(data);
-   console.log(typeof data.balances[0].balance);
 
   return (
     <>
