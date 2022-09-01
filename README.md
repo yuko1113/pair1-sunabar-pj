@@ -14,7 +14,7 @@ in preparation
 
 * docker
 * docker-compose
-* node.js LTS
+* node.js
 * Next.js
 * TypeScript
 
@@ -38,10 +38,7 @@ in preparation
 git clone https://github.com/yuko1113/pair1-sunabar-pj.git
 ```
 ```bash
-docker-compose run --rm app npm install create-next-app
-```
-```bash
-docker-compose run --rm app npx create-next-app next --ts
+docker-compose run -w /usr/src/app/next --rm app npm install
 ```
 ```bash
 docker-compose up -d
