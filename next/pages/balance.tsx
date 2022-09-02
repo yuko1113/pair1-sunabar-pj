@@ -20,13 +20,17 @@ export async function getServerSideProps() {
 
 export default function balanceList({ data }: any) {
 
+  console.log(data);
+
   return (
     <>
       <h2>残高照会</h2>
       あなたのすべての残高は、{parseInt(data.balances[0].balance).toLocaleString()} 円です！<br/>
       そのうち、<br/>
       メイン口座の残高は、{parseInt(data.spAccountBalances[0].odBalance).toLocaleString()}円です！<br/>
-      子口座の残高は、{parseInt(data.spAccountBalances[1].odBalance).toLocaleString()}円です！
+      おこづかい口座の残高は、{parseInt(data.spAccountBalances[1].odBalance).toLocaleString()}円です！<br/>
+      貯金口座の残高は、{parseInt(data.spAccountBalances[2].odBalance).toLocaleString()}円です！<br/>
+      投資口座の残高は、{parseInt(data.spAccountBalances[3].odBalance).toLocaleString()}円です！<br/>
     </>
   );
 }

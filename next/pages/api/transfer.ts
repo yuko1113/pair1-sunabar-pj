@@ -30,7 +30,7 @@ export default async function handler(
   const myHeaders = new Headers();
   myHeaders.append("Accept", "application/json;charset=UTF-8");
   myHeaders.append("Content-Type", "application/json;charset=UTF-8");
-  myHeaders.append("x-access-token", "OWY0MDg2MThhOTE3MzMzNjhkMDQ2N2Jk");
+  myHeaders.append("x-access-token", "OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4");
 
   const raw = JSON.stringify({
     "accountId": "302010005104",
