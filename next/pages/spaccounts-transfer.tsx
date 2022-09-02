@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios,{AxiosResponse} from "axios";
 import React,{ useState } from "react";
 
 export default function spaAcc() {
@@ -10,6 +10,7 @@ export default function spaAcc() {
             depositSpAccount,
             paymentAmount
         })
+        .then((res: AxiosResponse) => alert("振替が完了しました"))
     }
 
     return(
