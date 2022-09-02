@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from "axios";
+import styles from '../styles/Home.module.css'
 
 export default function transferList() {
     const [transferAmount, setTransferAmount] = useState<string>("");
@@ -16,25 +17,29 @@ export default function transferList() {
 
     return (
         <>
-        <h1>振込</h1>
+        <h1 className={styles.zandakadaimei}>振込</h1>
+        <div className={styles.hurikomidaimei}>
         <label>  誰に振り込む？ </label>
-        <select value={beneficiaryId} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBeneficiaryId(e.currentTarget.value)}>
+        <select value={beneficiaryId} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBeneficiaryId(e.currentTarget.value)} className={styles.hurikominyuu}>
             <option value="0">選んでね！</option>
             <option value={"A"}>お父さん</option>
             <option value={"B"}>おばあちゃん</option>
             <option value={"C"}>ピアノ教室</option>
         </select>
         <br/>
+        <br/>
         <label>  いくら振り込む？ </label>
-        <input type="text" value={transferAmount} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTransferAmount(e.currentTarget.value)}/> <span>円</span>
-        <br/>      
-        <button onClick={postTransfer}>振り込む！</button>
+        <input type="text" value={transferAmount} className={styles.hurikominyuu} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTransferAmount(e.currentTarget.value)}/> <span>円</span>
+        <br/> 
+        <br/>
+        <button onClick={postTransfer} className={styles.gobutton}>振込！</button>
         <br/>
         <br/> 
         ログインして振込を承認してください！
         <a href="https://sso.sunabar.gmo-aozora.com/b2c/login"><br/>
-            <button>ログインする</button>
+            <button className={styles.gobutton} >ログイン！</button>
         </a>
+        </div>
         </>
     );
 }
