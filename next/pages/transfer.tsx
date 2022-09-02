@@ -40,7 +40,7 @@ export default function transferList() {
         <br/>
         <br/> 
         ログインして振込を承認してください！
-        <a href="https://sso.sunabar.gmo-aozora.com/b2c/login?_ga=2.151931577.1642901541.1662067922-2119240431.1662067922"><br/>
+        <a href="https://sso.sunabar.gmo-aozora.com/b2c/login"><br/>
             <button>ログインする</button>
         </a>
         </>

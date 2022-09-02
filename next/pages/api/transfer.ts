@@ -16,7 +16,7 @@ export default async function handler(
   if (beneficiaryId === "A") {
     beneficiaryBranchCode = "302";
     accountNumber = "0005111";
-    beneficiaryName = "ｽﾅﾊﾞ ｼｭｳｼﾞ";
+    beneficiaryName = "ｽﾅﾊﾞ ｼﾕｳｼﾞ";
   } else if (beneficiaryId === "B") {
     beneficiaryBranchCode = "301";
     accountNumber = "0005111";
@@ -33,7 +33,7 @@ export default async function handler(
   myHeaders.append("x-access-token", "OWY0MDg2MThhOTE3MzMzNjhkMDQ2N2Jk");
 
   const raw = JSON.stringify({
-    "accountId": "302010005050",
+    "accountId": "302010005104",
     "transferDesignatedDate": "2022-09-02",
     "transferDateHolidayCode": "1", 
     "totalCount": "1",
