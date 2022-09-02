@@ -7,9 +7,9 @@ export default async function handler(req: NextApiRequest, res:NextApiResponse<D
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json;charset=UTF-8");
     myHeaders.append("Content-Type", "application/json;charset=UTF-8");
-    myHeaders.append("x-access-token", "ZDRjNDFkOTFmZjJlYzRhNTA0ZWI3MDkz");
+    myHeaders.append("x-access-token", "OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4");
     
-    const raw = JSON.stringify({ "depositSpAccountId":depositSpAccount,"debitSpAccountId":"SP30110005067","currencyCode":"JPY","paymentAmount":paymentAmount});
+    const raw = JSON.stringify({ "depositSpAccountId":depositSpAccount,"debitSpAccountId":"SP30210005104","currencyCode":"JPY","paymentAmount":paymentAmount});
     const requestOptions = {
         method: 'POST',
         headers: myHeaders,

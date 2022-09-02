@@ -19,9 +19,9 @@ export default function spaAcc() {
             <label>何用？</label>
             <select value={depositSpAccount} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setdepositSpAccount(e.currentTarget.value)}>
                 <option value="0">用途</option>
-                <option value={"SP50220278959"}>おこづかい</option>
-                <option value={"saving"}>貯金</option>
-                <option value={"investing"}>投資</option>
+                <option value={"SP50220285148"}>おこづかい</option>
+                <option value={"SP50220285155"}>貯金</option>
+                <option value={"SP50220285162"}>投資</option>
             </select>
             <br></br>
             <label>何円振り替える？</label>
