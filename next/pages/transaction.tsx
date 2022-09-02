@@ -1,6 +1,6 @@
 import React from "react";
 import type { GetServerSideProps } from "next";
-
+import styles from '../styles/Home.module.css'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const myHeaders = new Headers();
@@ -42,14 +42,18 @@ function Transactions({ posts }: any) {
         }
     })
     return (
+        <>
+                <h1 className={styles.zandakadaimei}>入出金明細</h1>
     <div>
         {posts.transactions.map((post:any) => (
-            
+            <div className={styles.nyuusyukkinn}>
         <ul>
-            日付：{post.transactionDate}<br/><br/>取引金額：{post.amount}円<br/><br/>場所：{post.remarks}<br/><br/>残高：{post.balance}円<hr/>
+            日付：{post.transactionDate}<br/><br/>取引金額：{post.amount}円<br/><br/>場所：{post.remarks}<br/><br/>残高：{post.balance}円
         </ul>
+        </div>
         ))}
     </div>
+    </>
     );
 }
 

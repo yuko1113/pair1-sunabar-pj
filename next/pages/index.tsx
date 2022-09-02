@@ -26,7 +26,6 @@ export async function getServerSideProps() {
 
 const Home: NextPage = ({ data }: any) => {
   return (
-    
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -35,17 +34,16 @@ const Home: NextPage = ({ data }: any) => {
       </Head>
 
       <main className={styles.main}>
-
-        <div>
-          <h2>あなたの残高は、{parseInt(data.balances[0].balance).toLocaleString()} 円です！</h2>
+        <div className={styles.zandakabig}>
+          <h2 className={styles.h2zan}>あなたの残高は、{parseInt(data.balances[0].balance).toLocaleString()} 円です！</h2>
           <Link href={"/balance"}>
-            <h3 className={styles.card}>くわしく見る</h3>
+            <h3 className={styles.ca}>くわしく見る</h3>
           </Link>
         </div>
 
         <div className={styles.grid}>
           <Link href={"/transfer"}>
-            <h2 className={styles.card}>お金を振り込む</h2>
+            <h2 className={styles.card}>お金振り込む</h2>
           </Link>
 
           <Link href={"/spaccounts-transfer"}>
@@ -53,9 +51,9 @@ const Home: NextPage = ({ data }: any) => {
           </Link>
         </div>
 
-        <div className={styles.grid}>
+        <div className={styles.zandakabig2}>
           <Link href={"/transaction"}>
-            <h2 className={styles.card}>入出金の明細を確認する</h2>
+            <h2>入出金の明細を確認する</h2>
           </Link>
         </div>
 
