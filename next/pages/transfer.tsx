@@ -26,15 +26,7 @@ export default function transferList() {
         </select>
         <br/>
         <label>  いくら振り込む？ </label>
-        <select value={transferAmount} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setTransferAmount(e.currentTarget.value)}>
-            <option value="0">選んでね！</option>
-            <option value={"1000"}>1,000円</option>
-            <option value={"3000"}>3,000円</option>
-            <option value={"5000"}>5,000円</option>
-            <option value={"10000"}>10,000円</option>
-            <option value={"15000"}>15,000円</option>
-            <option value={"20000"}>20,000円</option>
-        </select>
+        <input type="text" value={transferAmount} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTransferAmount(e.currentTarget.value)}/> <span>円</span>
         <br/>      
         <button onClick={postTransfer}>振り込む！</button>
         <br/>
