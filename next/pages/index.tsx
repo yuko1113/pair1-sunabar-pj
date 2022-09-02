@@ -26,6 +26,7 @@ export async function getServerSideProps() {
 
 const Home: NextPage = ({ data }: any) => {
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
