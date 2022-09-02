@@ -2,17 +2,42 @@ import { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from "axios";
 import styles from '../styles/Home.module.css'
 
-export default function transferList() {
+export async function getServerSideProps() {
+    const res: AxiosResponse = await axios.get("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/balances", {
+        headers: { 
+            'Accept': 'application/json;charset=UTF-8', 
+            'Content-Type': 'application/json;charset=UTF-8', 
+            'x-access-token': 'OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4'
+        }
+    });
+  
+    const data = await res.data;
+  
+    return { 
+        props: {
+            data: data 
+        },
+    };
+}  
+
+export default function transferList({ data }: any) {
     const [transferAmount, setTransferAmount] = useState<string>("");
     const [beneficiaryId, setBeneficiaryId] = useState<string>("");
 
+    const beforeAmount = parseInt(data.balances[0].balance).toLocaleString();
+
     const postTransfer = () => {
-        axios.post('/api/transfer', {
-            transferAmount,
-            beneficiaryId,        
-        })
-        .then((res: AxiosResponse) => alert("振込依頼が完了しました"))
-        .catch((e: AxiosError) => alert("エラーが発生しました"));
+
+        if (transferAmount > beforeAmount) {
+            alert("口座残高が不足しています！");
+        } else {  
+            axios.post('/api/transfer', {
+                transferAmount,
+                beneficiaryId,        
+            })
+            .then((res: AxiosResponse) => alert("振込依頼が完了しました"))
+            .catch((e: AxiosError) => alert("エラーが発生しました"));
+        }
     }
 
     return (
