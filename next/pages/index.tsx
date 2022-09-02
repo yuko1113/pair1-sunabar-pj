@@ -43,7 +43,7 @@ const Home: NextPage = ({ data }: any) => {
 
         <div className={styles.grid}>
           <Link href={"/transfer"}>
-            <h2 className={styles.card}>お金振り込む</h2>
+            <h2 className={styles.card}>お金を振り込む</h2>
           </Link>
 
           <Link href={"/spaccounts-transfer"}>

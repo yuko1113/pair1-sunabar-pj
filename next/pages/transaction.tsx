@@ -48,7 +48,7 @@ function Transactions({ posts }: any) {
         {posts.transactions.map((post:any) => (
             <div className={styles.nyuusyukkinn}>
         <ul>
-            日付：{post.transactionDate}<br/><br/>取引金額：{post.amount}円<br/><br/>場所：{post.remarks}<br/><br/>残高：{post.balance}円
+            日付：{post.transactionDate}<br/><br/>取引金額：{post.amount}円<br/><br/>相手：{post.remarks}<br/><br/>残高：{post.balance}円
         </ul>
         </div>
         ))}
