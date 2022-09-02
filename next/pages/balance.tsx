@@ -1,25 +1,24 @@
-import { useState, useEffect } from 'react';
 import axios, { AxiosResponse, AxiosError } from "axios";
 
 export async function getServerSideProps() {
-    const res = await axios.get("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/balances", {
-        headers: { 
-            'Accept': 'application/json;charset=UTF-8', 
-            'Content-Type': 'application/json;charset=UTF-8', 
-            'x-access-token': 'OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4'
-        }
-    });
+  const res: AxiosResponse = await axios.get("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/balances", {
+      headers: { 
+          'Accept': 'application/json;charset=UTF-8', 
+          'Content-Type': 'application/json;charset=UTF-8', 
+          'x-access-token': 'OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4'
+      }
+  });
 
-    const data = await res.data;
+  const data = await res.data;
 
-    return { 
-        props: {
-            data: data 
-        },
-    };
+  return { 
+      props: {
+          data: data 
+      },
+  };
 }
 
-export default function balanceList({ data }) {
+export default function balanceList({ data }: any) {
 
   return (
     <>

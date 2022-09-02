@@ -1,14 +1,11 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { brotliDecompressSync } from 'zlib';
 
-// type Data = {
-//   name: string
-// }
+import transfer from "../transfer.json";
+type Transfer = typeof transfer;
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+  req : NextApiRequest,
+  res: NextApiResponse
 ) {
 
   const { transferAmount, beneficiaryId } = req.body;
@@ -17,17 +14,17 @@ export default async function handler(
   let beneficiaryName;
 
   if (beneficiaryId === "A") {
-    beneficiaryBranchCode = "101";
-    accountNumber = "0005050";
-    beneficiaryName = "ｽﾅﾊﾞｶｽﾞﾔ(ｶ";
+    beneficiaryBranchCode = "302";
+    accountNumber = "0005111";
+    beneficiaryName = "ｽﾅﾊﾞ ｼｭｳｼﾞ";
   } else if (beneficiaryId === "B") {
     beneficiaryBranchCode = "301";
-    accountNumber = "0005135";
-    beneficiaryName = "ｽﾅﾊﾞﾄｼﾋｺ";    
+    accountNumber = "0005111";
+    beneficiaryName = "ｽﾅﾊﾞ ﾐｳ";    
   } else if (beneficiaryId === "C") {
-    beneficiaryBranchCode = "101";
-    accountNumber = "0005050";
-    beneficiaryName = "ｽﾅﾊﾞｶｽﾞﾔ(ｶ";     
+    beneficiaryBranchCode = "301";
+    accountNumber = "0005128";
+    beneficiaryName = "ｽﾅﾊﾞ ﾘﾎ";     
   }
 
   const myHeaders = new Headers();
@@ -36,33 +33,30 @@ export default async function handler(
   myHeaders.append("x-access-token", "OWY0MDg2MThhOTE3MzMzNjhkMDQ2N2Jk");
 
   const raw = JSON.stringify({
-    "accountId":"302010005050",
-    "transferDesignatedDate":"2022-09-01",
-    "transferDateHolidayCode":"1", 
-    "totalCount":"1",
+    "accountId": "302010005050",
+    "transferDesignatedDate": "2022-09-02",
+    "transferDateHolidayCode": "1", 
+    "totalCount": "1",
     "totalAmount": transferAmount,
     "transfers":
         [{
-            "itemId":"1",
+            "itemId": "1",
             "transferAmount": transferAmount,
-            "beneficiaryBankCode":"0310",
+            "beneficiaryBankCode": "0310",
             "beneficiaryBranchCode": beneficiaryBranchCode,
-            "accountTypeCode":"1",
+            "accountTypeCode": "1",
             "accountNumber": accountNumber,
             "beneficiaryName": beneficiaryName}]
         }
   );
 
-  const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-  };
+  const response = await fetch("https://api.sunabar.gmo-aozora.com/personal/v1/transfer/request",{
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  });
 
-  const response = await fetch("https://api.sunabar.gmo-aozora.com/personal/v1/transfer/request",requestOptions);
   const posts = await response.json();
-
   res.status(200).json({ posts });
-
 }

@@ -1,9 +1,30 @@
 import type { NextPage } from 'next'
+import Link from "next/link";
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios, { AxiosResponse, AxiosError } from "axios";
 
-const Home: NextPage = () => {
+export async function getServerSideProps() {
+  const res: AxiosResponse = await axios.get("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/balances", {
+      headers: { 
+          'Accept': 'application/json;charset=UTF-8', 
+          'Content-Type': 'application/json;charset=UTF-8', 
+          'x-access-token': 'OGY0ZGM4YTJmNmQxMDBlNjNjZDhmNjk4'
+      }
+  });
+
+  const data = await res.data;
+
+  return { 
+      props: {
+          data: data 
+      },
+  };
+}
+
+
+const Home: NextPage = ({ data }: any) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,58 +34,31 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <div>
+          <h2>あなたの残高は、{parseInt(data.balances[0].balance).toLocaleString()} 円です！</h2>
+          <Link href={"/balance"}>
+            <h3 className={styles.card}>くわしく見る</h3>
+          </Link>
+        </div>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href={"/transfer"}>
+            <h2 className={styles.card}>お金を振り込む</h2>
+          </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href={"/spaccounts-transfer"}>
+            <h2 className={styles.card}>お金を振り替える</h2>
+          </Link>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <div className={styles.grid}>
+          <Link href={"/transaction"}>
+            <h2 className={styles.card}>入出金の明細を確認する</h2>
+          </Link>
+        </div>
+
+      </main>
     </div>
   )
 }
