@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import NextLink from "next/link";
+import { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from "axios";
 
 export default function transferList() {
@@ -11,7 +10,8 @@ export default function transferList() {
             transferAmount,
             beneficiaryId,        
         })
-        .then((res: AxiosResponse) => console.log('Posting data', res))
+        .then((res: AxiosResponse) => alert("振込依頼が完了しました"))
+        .catch((e: AxiosError) => alert("エラーが発生しました"));
     }
 
     return (
@@ -36,14 +36,13 @@ export default function transferList() {
             <option value={"20000"}>20,000円</option>
         </select>
         <br/>      
-        <button onClick={postTransfer}>  振り込む！</button>
+        <button onClick={postTransfer}>振り込む！</button>
         <br/>
         <br/> 
         ログインして振込を承認してください！
-        <a href="https://sso.sunabar.gmo-aozora.com/b2c/login?_ga=2.157711802.163650072.1661733632-1080327016.1661733632">
-        <br/>
-        <button>ログインする</button></a>
+        <a href="https://sso.sunabar.gmo-aozora.com/b2c/login?_ga=2.151931577.1642901541.1662067922-2119240431.1662067922"><br/>
+            <button>ログインする</button>
+        </a>
         </>
     );
 }
-
