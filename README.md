@@ -49,10 +49,6 @@ docker-compose up -d
 
 After the application start, navigate to http://localhost:3000 in your browser.
 
-# Note
-
-in preparation
-
 # Author
 
 * team pair1
