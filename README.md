@@ -4,11 +4,14 @@ This application allows users to experience some of the features of internet ban
 
 # DEMO
 
-in preparation
+<img width="1411" alt="スクリーンショット 2022-10-17 17 51 53" src="https://user-images.githubusercontent.com/94224160/196133738-5828d932-833b-47f4-b7c0-514773430798.png">
 
 # Features
 
-in preparation
+* Balance Confirmation
+* deposit and withdrawal Confirmation
+* payment made via bank deposit transfer
+* account transfer
 
 # Requirement
 
